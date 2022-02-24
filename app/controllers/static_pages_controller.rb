@@ -1,13 +1,12 @@
 class StaticPagesController < ApplicationController
 
     def index
-        @test_variable = "hello world"
     end
 
     def about
     end
 
-    def contact
+    def contact_us
     end
 
 end
