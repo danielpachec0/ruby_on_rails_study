@@ -16,18 +16,47 @@
   <div class="collapse navbar-collapse" id="expanded-menu">
     <ul class="nav navbar-nav">
 
+    <% if !user_singed_in? %>
+
       <li class="active">
         <%= link_to 'Sing Up', new_user_path %>
       </li>
+
+    <% end %>
+      
 
     </ul>
 
     <ul class="nav navbar-nav navbar-right">
 
-        <li>
-          <%= link_to 'Log In', '#' %>
+      <% if !user_singed_in? %>
+
+      <li>
+        <%= link_to 'Log In', login_path %>
+      </li>
+
+      <% else %>
+
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="false">
+            Wellcome <%= current_user.name_string %> <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <%= link_to "My page", current_user %>
+            </li>
+            <li>
+              <%= link_to "Edit", "#" %>
+            </li>
+            <li class="divider" role="separator"></li>
+            <li>
+              <%= link_to "Log out", log_out_path, method: :delete %>
+            </li>
+          </ul>
         </li>
 
+      <% end %>
+        
     </ul>
 
   </div>
